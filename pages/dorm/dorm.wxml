@@ -1,0 +1,192 @@
+<i-message id="message" />
+<view wx:if="{{choose}}">
+<i-steps current="{{current}}">
+    <i-step>
+        <view slot="title">
+           {{step1title}}
+        </view>
+        <view slot="content">
+           {{step1content}}
+        </view>
+    </i-step>
+    <i-step>
+        <view slot="title">
+          {{step2title}}
+        </view>
+        <view slot="content">
+          {{step2content}}
+        </view>
+    </i-step>
+    <i-step>
+        <view slot="title">
+              {{step3title}}
+        </view>
+        <view slot="content">
+              {{step3content}}
+        </view>
+    </i-step>
+</i-steps>
+
+<view wx:if="{{current==0}}">
+<view class="button">
+<i-button  type="success" shape="circle" disabled="{{singlemode}}" size="small" bindclick="chooseLeftClick">单人</i-button>
+
+<i-button  type="success" shape="circle" disabled="{{multimode}}" size="small" bindclick="chooseRightClick">多人选择</i-button>
+</view>
+<view wx:if="{{singlemode}}">
+<text>单人选宿舍直接下一步即可</text>
+</view>
+
+<view wx:if="{{multimode}}">
+<text>???</text>
+<view wx:for="{{multiarr}}" wx:for-index="idx" wx:for-item="itemName">
+    <i-input value="{{ itemName }}" type="textarea" title="新生" placeholder="请输入新生的学号)" maxlength="10" />
+</view>
+
+</view>
+
+</view>
+
+
+<view wx:if="{{current==1}}">
+
+
+
+<i-card bindtap="chooseDepart0" full="true" title="{{departarr[0].id+'号宿舍楼'}}" extra="{{departchoose[0]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{depart5w}}剩余男生床位:{{depart5m}}</view>
+    <view slot="footer">{{departinfoarr[0].info}}</view>
+</i-card>
+
+<i-card bindtap="chooseDepart1"  full="true" title="{{departarr[1].id+'号宿舍楼'}}" extra="{{departchoose[1]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{depart8w}}剩余男生床位:{{depart8m}}</view>
+    <view slot="footer">{{departinfoarr[1].info}}</view>
+</i-card>
+
+<i-card bindtap="chooseDepart2" full="true" title="{{departarr[2].id+'号宿舍楼'}}" extra="{{departchoose[2]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{depart9w}}剩余男生床位:{{depart9m}}</view>
+    <view slot="footer">{{departinfoarr[3].info}}</view>
+</i-card>
+
+
+<i-card bindtap="chooseDepart3" full="true" title="{{departarr[3].id+'号宿舍楼'}}" extra="{{departchoose[3]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{depart13w}}剩余男生床位:{{depart13m}}</view>
+    <view slot="footer">{{departinfoarr[3].info}}</view>
+</i-card>
+
+<i-card bindtap="chooseDepart4"  full="true" title="{{departarr[4].id+'号宿舍楼'}}" extra="{{departchoose[4]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{depart14w}}剩余男生床位:{{depart14m}}</view>
+    <view slot="footer">{{departinfoarr[4].info}}</view>
+</i-card>
+
+<i-card bindtap="chooseDepart5" full="true" title="都可以" extra="{{departchoose[5]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content"></view>
+    <view slot="footer">{{departinfoarr[5].info}}</view>
+</i-card>
+
+</view>
+
+
+<view wx:if="{{current==2}}">
+
+
+
+<view wx:if="{{depart!='5B'}}">
+<i-card bindtap="chooseSize1" full="true" title="二人间" extra="{{sizechoose[0]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{size2w}}剩余男生床位:{{size2m}}</view>
+    <view slot="footer">安静两人间</view>
+</i-card>
+</view>
+
+
+<view wx:if="{{depart!='5B'}}">
+<i-card bindtap="chooseSize2" full="true" title="三人间" extra="{{sizechoose[1]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{size3w}}剩余男生床位:{{size3m}}</view>
+    <view slot="footer">斗地主三人间</view>
+</i-card>
+</view>
+
+
+<view wx:if="{{true}}">
+<i-card bindtap="chooseSize3" full="true" title="四人间" extra="{{sizechoose[2]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{size4w}}剩余男生床位:{{size4m}}</view>
+    <view slot="footer">麻将四人间</view>
+</i-card>
+</view>
+
+
+<view wx:if="{{depart!='5B'}}">
+<i-card bindtap="chooseSize4" full="true"  title="五人间" extra="{{sizechoose[3]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">剩余女生床位：{{size5w}}剩余男生床位:{{size5m}}</view>
+    <view slot="footer">moba五人间</view>
+</i-card>
+</view>
+
+<view >
+<i-card bindtap="chooseSize5" full="true" title="我都行" extra="{{sizechoose[4]}}"  thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content"></view>
+    <view slot="footer">我是随缘党</view>
+</i-card>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<i-action-sheet visible="{{ tipvisible }}" actions="{{ actions }}" show-cancel bind:cancel="handleCancel" bind:click="handleClickItem" mask-closable="{{ false }}">
+    <view slot="header" style="padding: 16px">
+        <view style="color: #444;font-size: 16px">确定吗？</view>
+        <text>成功选取后无法修改哦</text>
+    </view>
+</i-action-sheet>
+
+
+</view>
+
+
+<view class="button">
+<i-button  type="success" shape="circle"  size="small" bindclick="handleLeftClick">{{btlinfo}}</i-button>
+
+<i-button  type="success" shape="circle" loading="{{btrload}}" size="small" bindclick="handleRightClick">{{btrinfo}}</i-button>
+</view>
+</view>
+<view wx:if="{{!chooseok}}">
+<view wx:if="{{!choose}}">
+<i-button bindclick="confirmChoose">开始选宿舍</i-button>
+
+</view>
+</view>
+
+<view wx:if="{{chooseok}}">
+<text>
+
+</text>
+<i-card title="{{chooseres}}"  extra="欢迎你" thumb="https://www.pku.edu.cn/Uploads/Picture/2019/12/26/s5e04176fbbfa3.png">
+    <view slot="content">{{depart}}宿舍楼</view>
+    <view slot="footer">{{dorm}}宿舍</view>
+</i-card>
+
+<i-cell-group>
+    <i-cell title="楼层：" is-link>{{floor}}楼</i-cell>
+    <i-cell title="大小：" is-link>{{size}}人间</i-cell>
+</i-cell-group>
+
+</view>
+
+
+
+

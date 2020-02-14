@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/dorm/dorm"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "Hello Fresh!",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#1C1C1C",
+    "selectedColor": "#3ADF00",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+            "pagePath": "pages/index/index",
+            "text": "我的信息",
+            "iconPath": "icons/名片.png",
+            "selectedIconPath": "icons/名片.png"
+          },
+      {
+        "pagePath": "pages/dorm/dorm",
+        "text": "认领宿舍",
+          "iconPath": "icons/宿舍.png",
+          "selectedIconPath":"icons/宿舍.png"
+      }
+  
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index"
+  }
+  
+}

@@ -1,0 +1,120 @@
+<block>
+<i-notice-bar icon="systemprompt" loop closable>
+   {{noticeInfo}}
+</i-notice-bar>
+
+</block>
+  
+
+<view class="userinfo">
+  <block>
+
+
+    <image  class="userinfo-avatar" src="https://www.pku.edu.cn/Uploads/Picture/2019/12/26/s5e04176fbbfa3.png" mode="cover"></image>
+      <text class="userinfo-nickname">你好新同学</text>
+  </block>
+</view>
+<form wx:if="{{!binded}}" bindsubmit="formSubmit" bindreset="formReset" formType="sub">
+   <view class="container">
+  <view class="bg-fff p-lr30 border-t">
+    <view class="ipt-wrap border-b flex ai-center">
+      <label for="" class="font14">姓名</label>
+      <input type="text"  name="names" class="ml40 flex1" placeholder="请输入姓名" bindinput="getNameValue"></input>
+            <view class="flex">
+        <text wx:if="{{nametip!=''}}">{{nametip}}</text>
+        <text class="iconfont icon-youjiantou color-a5a5a5 ml20"></text>
+      </view>
+    </view>
+
+
+<view class="ipt-wrap border-b flex ai-center">
+      <label for="" class="font14">学号</label>
+      <input type="text" name="stunumbers" class="ml40 flex1" maxlength="11" placeholder="请输入学生号" bindinput="getStuValue"></input>
+            <view class="flex">
+        <text wx:if="{{stunumbertip!=''}}">{{stunumbertip}}</text>
+        <text class="iconfont icon-youjiantou color-a5a5a5 ml20"></text>
+      </view>
+    </view>
+    
+
+        <view  class="ipt-wrap border-b flex ai-center">
+         <label for="" class="font14">性别   </label>
+            <radio-group  name="gender" class="radio-group" bindchange="radioChange">
+                <radio class="radio" wx:for-items="{{genderList}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                    <text>{{item.name+"&nbps"}}</text>
+                    <text decode="{{true}}" space ="nbps">  </text>
+                </radio>
+            </radio-group>
+                  <view class="flex">
+        <text wx:if="{{gendertip!=''}}">{{gendertip}}</text>
+        <text class="iconfont icon-youjiantou color-a5a5a5 ml20"></text>
+      </view>
+        </view>
+
+
+
+    <view class="ipt-wrap border-b flex ai-center">
+      <label for=""  class="font14">手机号码</label>
+      <input type="text" name="phones" class="ml40 flex1" maxlength="11" placeholder="请输入手机号码" bindinput="getPhoneValue"></input>
+            <view class="flex">
+        <text wx:if="{{phonetip!=''}}">{{phonetip}}</text>
+        <text class="iconfont icon-youjiantou color-a5a5a5 ml20"></text>
+      </view>
+    </view>
+
+
+
+<view class="ipt-wrap border-b flex ai-center jc-sb">
+      <view class="flex ai-center">
+        <label for="" class="font14">所在地区</label>
+        <picker mode="region" name="region" class="ml40 flex1 region" placeholder="省、市、区" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">        
+          <view class="picker flex1 texthide">
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+        </picker>
+      </view>
+      <view class="flex">
+        <text wx:if="{{regionFlag}}">请选择</text>
+        <text class="iconfont icon-youjiantou color-a5a5a5 ml20"></text>
+      </view>
+    </view>
+<view class="ipt-wrap border-b flex ai-center jc-sb">
+      <view class="flex ai-center">
+        <label for="" class="font14">学苑</label>
+        <picker  class="ml40 flex1 region"  placeholder="学苑"  name="classes" bindchange="bindClassChange"  value="{{index}}" range="{{classarr}}">
+<view class="picker flex1 texthide">
+        {{classarr[classindex]}}
+          </view>
+        </picker>
+      </view>
+      <view class="flex">
+        <text wx:if="{{regionFlag}}">请选择</text>
+        <text class="iconfont icon-youjiantou color-a5a5a5 ml20"></text>
+      </view>
+    </view>
+    <view class="ipt-wrap border-b">
+      <textarea name="" id="" class="textarea _w100 p-tb30 lh10" maxlength="50" placeholder="可在此处填写备注说明" bindinput="getRemarksValue" ></textarea>
+    </view>
+  </view>
+   <view>
+    <button class="btn1" formType="submit">提交</button>
+  </view>
+  </view>
+</form>
+
+
+
+
+
+<block wx:if="{{binded}}">
+
+<i-cell-group>
+<i-cell title="姓名：{{name}}" ></i-cell>
+<i-cell title="性别：{{genderarr[gender]}}" ></i-cell>
+<i-cell title="学号：{{stunumber}}" ></i-cell>
+<i-cell title="手机：{{phone}}" ></i-cell>
+<i-cell title="所在地：{{reg}}" ></i-cell>
+<i-cell title="学苑：{{classarr[classindex]}}"></i-cell>
+</i-cell-group>
+</block>
+
